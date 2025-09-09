@@ -99,17 +99,10 @@ export default function Dashboard({ users, todos }) {
       owner: "NurseCritical",
       stake_holder: "STKH-66420",
     },
-    {
-      title: "Pediatric Nursing Essentials",
-      status: "Free",
-      players: 5800,
-      owner: "Care4Kids Institute",
-      stake_holder: "STKH-82311",
-    },
   ];
 
   return (
-    <div className="p-3 space-y-6 bg-gray-50 dark:bg-gray-900 max-h-full transition-colors">
+    <div className="p-3 space-y-3 bg-gray-50 dark:bg-gray-900 max-h-full transition-colors">
       {/* Top Stats */}
       <div className="grid grid-cols-1 gap-4">
         <div className="grid grid-row-1 md:grid-cols-3 gap-4">

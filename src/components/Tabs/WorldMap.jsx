@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import Globe from "react-globe.gl";
+import toast from "react-hot-toast";
 
 export default function GlobeMap({ users, darkMode }) {
   const [markers, setMarkers] = useState([]);
@@ -16,9 +17,24 @@ export default function GlobeMap({ users, darkMode }) {
   }, [users]);
 
   useEffect(() => {
-    if (globeEl.current) {
-      globeEl.current.controls().autoRotate = true;
-      globeEl.current.controls().autoRotateSpeed = 0.3;
+    try {
+      // Check if WebGL is available
+      const canvas = document.createElement("canvas");
+      const gl =
+        canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+
+      if (!gl) {
+        toast.error("🌍 Globe visualization not supported on this device.");
+        return;
+      }
+
+      // Safe to init globe
+      if (globeEl.current) {
+        globeEl.current.controls().autoRotate = true;
+        globeEl.current.controls().autoRotateSpeed = 0.5;
+      }
+    } catch (err) {
+      toast.error("⚠️ Failed to load Globe visualization.");
     }
   }, []);
 
@@ -29,8 +45,8 @@ export default function GlobeMap({ users, darkMode }) {
     >
       <Globe
         ref={globeEl}
-        width={1800}
-        height={920}
+        width={1790}
+        height={900}
         globeImageUrl={
           darkMode
             ? "//unpkg.com/three-globe/example/img/earth-night.jpg"
@@ -40,9 +56,9 @@ export default function GlobeMap({ users, darkMode }) {
         pointsData={markers}
         pointLat="lat"
         pointLng="lng"
-        pointColor={() => (darkMode ? "white" : "blue")}
+        pointColor={() => (darkMode ? "white" : "white")}
         pointAltitude={0.02}
-        pointRadius={0.4}
+        pointRadius={() => (darkMode ? "0.5" : "0.8")}
         pointLabel={(d) => `<b>${d.city}</b>`}
         pointTransitionDuration={500}
         backgroundColor={darkMode ? "rgba(0,0,0,1)" : "rgba(255,255,255,1)"}

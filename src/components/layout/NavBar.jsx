@@ -35,10 +35,14 @@ export default function Navbar({ darkMode, setDarkMode }) {
             className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition"
           >
             {darkMode ? (
-              <MdLightMode className="text-yellow-400" size={20} />
+              <MdLightMode
+                className="text-yellow-400 animate-[spin_12s_linear_infinite]"
+                size={22}
+              />
             ) : (
-              <MdDarkMode className="text-gray-700" size={20} />
+              <MdDarkMode className="text-gray-700 animate-bob" size={22} />
             )}
+
             <span className="hidden sm:inline text-sm font-medium dark:text-gray-100">
               {darkMode ? "Light" : "Dark"}
             </span>
