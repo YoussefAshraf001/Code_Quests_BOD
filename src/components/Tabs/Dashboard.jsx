@@ -1,3 +1,4 @@
+import { FaBuilding, FaListAlt, FaUsers } from "react-icons/fa";
 import Card from "../ui/Card";
 import {
   BarChart,
@@ -111,7 +112,7 @@ export default function Dashboard({ users, todos }) {
     <div className="p-3 space-y-6 bg-gray-50 dark:bg-gray-900 max-h-full transition-colors">
       {/* Top Stats */}
       <div className="grid grid-cols-1 gap-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-row-1 md:grid-cols-3 gap-4">
           <Card
             title="Total Users"
             value={totalUsers}
@@ -120,6 +121,7 @@ export default function Dashboard({ users, todos }) {
               { label: "Active", value: activeUsers },
               { label: "Companies", value: totalCompanies },
             ]}
+            icon={<FaUsers size={30} />}
           />
 
           <Card
@@ -129,6 +131,7 @@ export default function Dashboard({ users, todos }) {
               { label: "Completed", value: completedTodos },
               { label: "Pending", value: pendingTodos },
             ]}
+            icon={<FaListAlt size={30} />}
           />
 
           <Card
@@ -138,6 +141,7 @@ export default function Dashboard({ users, todos }) {
               { label: "Largest", value: largestCompany },
               { label: "Employees", value: companyEmployees[largestCompany] },
             ]}
+            icon={<FaBuilding size={30} />}
           />
         </div>
       </div>
