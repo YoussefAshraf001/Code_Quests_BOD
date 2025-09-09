@@ -198,53 +198,58 @@ export default function Dashboard({ users, todos }) {
       </div>
 
       {/* Table */}
+
       <div className="bg-white dark:bg-gray-800 dark:border dark:border-gray-700 rounded-xl shadow p-4 transition-colors">
         <h2 className="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-100">
           Most Popular Items
         </h2>
-        <table className="w-full text-left">
-          <thead>
-            <tr className="border-b border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300">
-              <th className="py-2">Title</th>
-              <th>Status</th>
-              <th>Total Players</th>
-              <th>Owner</th>
-              <th>Stakes</th>
-            </tr>
-          </thead>
-          <tbody>
-            {topItems.map((item, idx) => (
-              <tr
-                key={idx}
-                className="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-              >
-                <td className="py-2 text-gray-800 dark:text-gray-100">
-                  {item.title}
-                </td>
-                <td>
-                  <span
-                    className={`px-2 py-1 rounded text-xs font-medium ${
-                      item.status === "Premium"
-                        ? "bg-yellow-200 text-yellow-800 dark:bg-yellow-600 dark:text-yellow-100"
-                        : "bg-green-200 text-green-800 dark:bg-green-600 dark:text-green-100"
-                    }`}
-                  >
-                    {item.status}
-                  </span>
-                </td>
-                <td className="text-gray-800 dark:text-gray-100">
-                  {item.players.toLocaleString()}
-                </td>
-                <td className="text-gray-800 dark:text-gray-100">
-                  {item.owner}
-                </td>
-                <td className="text-blue-600 dark:text-blue-400">
-                  {item.stake_holder}
-                </td>
+
+        {/* Scrollable container */}
+        <div className="overflow-x-auto">
+          <table className="w-full text-left min-w-[600px]">
+            <thead>
+              <tr className="border-b border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300">
+                <th className="py-2">Title</th>
+                <th>Status</th>
+                <th>Total Players</th>
+                <th>Owner</th>
+                <th>Stakes</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {topItems.map((item, idx) => (
+                <tr
+                  key={idx}
+                  className="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                >
+                  <td className="py-2 text-gray-800 dark:text-gray-100 whitespace-nowrap">
+                    {item.title}
+                  </td>
+                  <td>
+                    <span
+                      className={`px-2 py-1 rounded text-xs font-medium ${
+                        item.status === "Premium"
+                          ? "bg-yellow-200 text-yellow-800 dark:bg-yellow-600 dark:text-yellow-100"
+                          : "bg-green-200 text-green-800 dark:bg-green-600 dark:text-green-100"
+                      }`}
+                    >
+                      {item.status}
+                    </span>
+                  </td>
+                  <td className="text-gray-800 dark:text-gray-100 whitespace-nowrap">
+                    {item.players.toLocaleString()}
+                  </td>
+                  <td className="text-gray-800 dark:text-gray-100 whitespace-nowrap">
+                    {item.owner}
+                  </td>
+                  <td className="text-blue-600 dark:text-blue-400 whitespace-nowrap">
+                    {item.stake_holder}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
