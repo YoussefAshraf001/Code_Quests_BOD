@@ -72,36 +72,36 @@ export default function Table({ columns, data = [], itemsPerPage = 5 }) {
     setEditValues({ ...row });
   };
 
-  // I WANTED TO TURN OF VALIDATION BECAUSE JSONPLACEHOLDER HAS ALOT OF RANDOM SYMBOLS AND CHARACTERS IN PLACES THAT SHOULDN'T HAVE THEM
-  const isValid = (key, value) => {
-    const columnKeys = columns.map((c) => c.accessor);
-    if (!columnKeys.includes(key)) return true;
+  // I TURNED OFF VALIDATION BECAUSE JSONPLACEHOLDER HAS ALOT OF RANDOM SYMBOLS AND CHARACTERS IN PLACES THAT SHOULDN'T HAVE THEM
+  // const isValid = (key, value) => {
+  //   const columnKeys = columns.map((c) => c.accessor);
+  //   if (!columnKeys.includes(key)) return true;
 
-    key = key.toLowerCase();
+  //   key = key.toLowerCase();
 
-    if (key === "name" || key === "username") {
-      // Allow letters, spaces, hyphens, apostrophes
-      return /^[a-zA-Z\s\-']+$/.test(value);
-    }
+  //   if (key === "name" || key === "username") {
+  //     // Allow letters, spaces, hyphens, apostrophes
+  //     return /^[a-zA-Z\s\-']+$/.test(value);
+  //   }
 
-    if (key.includes("phone")) {
-      // Allow digits, spaces, +, -, (, )
-      return /^[0-9+\-\s()]+$/.test(value);
-    }
+  //   if (key.includes("phone")) {
+  //     // Allow digits, spaces, +, -, (, )
+  //     return /^[0-9+\-\s()]+$/.test(value);
+  //   }
 
-    if (key.includes("email")) {
-      // Simple email pattern: allow @ and dots
-      return /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$/.test(value);
-    }
+  //   if (key.includes("email")) {
+  //     // Simple email pattern: allow @ and dots
+  //     return /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$/.test(value);
+  //   }
 
-    if (key.includes("company")) {
-      // Allow letters, numbers, spaces, &,-,().
-      return /^[\w\s\-().]+$/.test(value);
-    }
+  //   if (key.includes("company")) {
+  //     // Allow letters, numbers, spaces, &,-,().
+  //     return /^[\w\s\-().]+$/.test(value);
+  //   }
 
-    // Default: allow most common characters
-    return /^[\w\s\-!,()@']*$/.test(value);
-  };
+  //   // Default: allow most common characters
+  //   return /^[\w\s\-!,()@']*$/.test(value);
+  // };
 
   const handleSave = (id) => {
     const originalRow = tableData.find((r) => r.id === id) || {};
@@ -123,10 +123,10 @@ export default function Table({ columns, data = [], itemsPerPage = 5 }) {
         setModalOpen(true);
         return;
       }
-      if (!isValid(col.accessor, val)) {
-        toast.error(`Invalid value for ${col.label || col.accessor}`);
-        return;
-      }
+      // if (!isValid(col.accessor, val)) {
+      //   toast.error(`Invalid value for ${col.label || col.accessor}`);
+      //   return;
+      // }
     }
     saveRow(id);
   };
@@ -165,7 +165,7 @@ export default function Table({ columns, data = [], itemsPerPage = 5 }) {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 border-b border-gray-200 dark:border-gray-700 gap-3">
         <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
-          Table
+          Table Overview
         </h2>
         <div className="flex items-center gap-3">
           <input

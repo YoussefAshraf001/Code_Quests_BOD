@@ -57,11 +57,11 @@ export default function Navbar({ darkMode, setDarkMode }) {
 
           {/* User info */}
           {user && (
-            <div className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+            <div className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 px-3 py-2 rounded-lg cursor-pointer border-2 border-transparent hover:border-blue-500 hover:shadow-[0_0_8px_2px_rgba(59,130,246,0.8)] transition duration-300">
               <img
                 src={user.image || "default-avatar.png"}
                 alt="Avatar"
-                className="w-8 h-8 rounded-full object-cover border-2 border-transparent hover:border-blue-500 hover:shadow-[0_0_8px_2px_rgba(59,130,246,0.8)] transition duration-300"
+                className="w-8 h-8 rounded-full object-cover"
               />
               <span className="hidden sm:inline text-sm font-medium text-gray-800 dark:text-gray-100">
                 {user.name}

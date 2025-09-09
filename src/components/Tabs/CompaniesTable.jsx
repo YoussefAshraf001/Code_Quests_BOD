@@ -27,7 +27,7 @@ export default function Companies({ users }) {
     { label: "Company", accessor: "company_name" },
     { label: "Catch Phrase", accessor: "company_catchPhrase" },
     { label: "Business Speak", accessor: "company_bs" },
-    { label: "Employees", accessor: "employees" }, // NEW COLUMN
+    { label: "Employees", accessor: "employees" },
   ];
 
   return (

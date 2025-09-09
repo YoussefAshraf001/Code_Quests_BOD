@@ -160,7 +160,12 @@ export default function Dashboard({ users, todos }) {
                   color: "#f9fafb",
                 }}
               />
-              <Bar dataKey="todos" fill="#818cf8" barSize={16} />
+              <Bar
+                dataKey="todos"
+                fill="#818cf8"
+                barSize={30}
+                activeBar={{ fill: "#6366f1" }}
+              />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -233,7 +238,7 @@ export default function Dashboard({ users, todos }) {
                 <td className="text-gray-800 dark:text-gray-100">
                   {item.owner}
                 </td>
-                <td className="text-blue-600 dark:text-blue-400 cursor-pointer">
+                <td className="text-blue-600 dark:text-blue-400">
                   {item.stake_holder}
                 </td>
               </tr>
