@@ -18,6 +18,7 @@ It includes user management, company insights, todos (expansions), world map vis
 - 🏢 **Companies Table** showing company details & employee count  
 - ✅ **Todos (Expansions) Table** with filtering  
 - 🌍 **World Map** using `react-globe.gl` to visualize users’ cities  
+  - Includes a **graceful fallback**: if WebGL is not supported or disabled, a static message is displayed instead of a blank screen.  
 - 🌗 **Dark Mode** toggle (persisted in `localStorage`)  
 - 🧭 **Collapsible Sidebar** with animations (Framer Motion)  
 - 🔔 **Notifications** (using `react-hot-toast`)  
@@ -43,3 +44,4 @@ Clone the repository and install dependencies:
 git clone https://github.com/your-username/smartbod-dashboard.git
 cd smartbod-dashboard
 npm install
+npm start
