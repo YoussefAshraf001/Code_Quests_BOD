@@ -45,7 +45,7 @@ export default function Sidebar({
     <motion.div
       animate={{ width: compactBar ? 70 : 250 }}
       transition={{ duration: 0.3 }}
-      className="absolute left-4 md:h-[998px] h-[650px] mt-4 
+      className="absolute left-4 md:h-[998px] h-[860px] mt-4 
         bg-white dark:bg-gray-900 
         text-gray-800 dark:text-gray-200 
         border border-gray-200 dark:border-[#6960d0]
